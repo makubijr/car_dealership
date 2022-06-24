@@ -1,6 +1,7 @@
 from multiprocessing import context
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import Listing
+from .forms import ListingForm
 # Create your views here.
 
 def listings(request):
@@ -17,3 +18,15 @@ def listing(request,id):
     }
     return render(request,'listing.html',context)
 
+
+def create(request):
+    form = ListingForm()
+    if request.method == 'POST':
+        form = ListingForm(request.POST)
+        if form.is_valid:
+            form.save()
+        return redirect('/')
+    context = {
+        'form':form
+    }
+    return render(request,'create.html',context)
