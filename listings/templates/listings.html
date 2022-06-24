@@ -1,0 +1,5 @@
+<p> here is our listings</p>
+
+{% for listing in listings %}
+<a href ='listing/{{ listing.id }}'> car {{ listing }}</a>
+{% endfor %}
