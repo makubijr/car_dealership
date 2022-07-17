@@ -22,7 +22,7 @@ def listing(request,id):
 def create(request):
     form = ListingForm()
     if request.method == 'POST':
-        form = ListingForm(request.POST)
+        form = ListingForm(request.POST,request.FILES)
         if form.is_valid:
             form.save()
         return redirect('/')
@@ -30,3 +30,22 @@ def create(request):
         'form':form
     }
     return render(request,'create.html',context)
+
+def update(request,id):
+    listing = Listing.objects.get(id=id)
+    form = ListingForm(instance = listing)
+    if request.method == 'POST':
+        form = ListingForm(request.POST,instance = listing, files = request.FILES)
+        if form.is_valid:
+            form.save()
+        return redirect('/') 
+    context = {
+        'form':form
+    }
+    return render(request,'update.html',context)
+
+def delete(request,id):
+    listing = Listing.objects.get(id=id)
+    listing.delete()
+    return redirect('/')
+

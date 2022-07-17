@@ -10,5 +10,6 @@ class ListingForm(ModelForm):
             'description',
             'brand',
             'milage',
-            'price'
+            'price',
+            'image'
         ]

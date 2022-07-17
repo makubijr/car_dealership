@@ -1,3 +1,5 @@
 here is our list single </br>
-
-{{ listing }}
+<P> Name: {{listing.name }} -- Price:{{ listing.price }}</P>
+<img src = '{{ listing.image.url }}' width= "400" height="300"></img>
+<a href = '/delete/{{ listing.id }}'>delete</a></br>
+<a href = '/update/{{ listing.id }}'>update</a>

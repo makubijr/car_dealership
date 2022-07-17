@@ -8,7 +8,7 @@ class Listing(models.Model):
     brand = models.CharField(max_length=100)
     milage = models.IntegerField()
     price = models.IntegerField()
-    #image 
+    image = models.ImageField()
 
     def __str__(self):
         return self.name 
